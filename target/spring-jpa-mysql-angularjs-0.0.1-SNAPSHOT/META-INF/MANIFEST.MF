@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: SpringJPAMySQLAngularJS
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: CPN63TNH
+Implementation-Vendor-Id: com.javasampleapproach
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_161
+Main-Class: ${start-class}
+
