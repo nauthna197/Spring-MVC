@@ -12,46 +12,8 @@
     <jsp:include page="admin-layout/stylesheet.jsp"/>
     <jsp:include page="admin-layout/script.jsp"/>
     <base href="<%=request.getContextPath()%>/"/>
-    <script type="text/javascript">
-        window.onload = function () {
-
-            var dataPoints = [];
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                title: {
-                    text: "Thống kê bán hàng 7 ngày gần nhất"
-                },
-                axisY: {
-                    title: "Đơn vị",
-                    titleFontSize: 24
-                },
-                data: [{
-                    type: "column",
-                    yValueFormatString: "#,### Units",
-                    dataPoints: dataPoints
-                }]
-            });
-
-            $.getJSON("http://localhost:8080/admin/date", function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        dataPoints.push({
-                            x: new Date(data[i].date),
-                            y: data[i].count
-                        });
-
-                    }
-                    chart.render();
-
-                }
-            )
-
-        }
-
-
-    </script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 

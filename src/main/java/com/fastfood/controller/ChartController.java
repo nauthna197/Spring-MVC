@@ -36,6 +36,11 @@ public class ChartController {
         return "admin/chart";
     }
 
+    @RequestMapping("productchart")
+    public String showproductChart(){
+        return "admin/productchart";
+    }
+
 
     @RequestMapping(value = "chart/month",produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody

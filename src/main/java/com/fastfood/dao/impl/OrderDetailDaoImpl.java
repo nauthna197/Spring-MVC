@@ -20,7 +20,6 @@ public class OrderDetailDaoImpl extends GenericDaoImpl<OrderDetail, Integer> imp
         Query query = getSession().createQuery("select count(product_id) from OrderDetail where product_id = :id");
         query.setParameter("id",product.getId());
         return (Long) query.uniqueResult();
-
     }
 
 

@@ -108,6 +108,7 @@ public class OrderController {
             Order order = orderService.findById(id);
             List<OrderDetail> lst = order.getOrderDetails();
            modelMap.addAttribute("order",lst);
+           modelMap.addAttribute("info",order);
            return "admin/order";
     }
 

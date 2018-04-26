@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Thống kê order theo 7 ngày gần nhất
+                Thống kê món ăn trong tháng
             </h1>
         </div>
         <!-- /.col-lg-12 -->
@@ -30,44 +30,48 @@
                     <script type="text/javascript">
                         window.onload = function () {
 
-                            var dataPoints = [];
+                            var dps = [];
+                            var sum =0;
 
-                            var chart = new CanvasJS.Chart("chartContainer", {
-                                animationEnabled: true,
-                                theme: "light2",
-                                title: {
-                                    text: "Thống kê bán hàng 7 ngày gần nhất"
-                                },
-                                axisY: {
-                                    title: "Đơn vị",
-                                    titleFontSize: 24
-                                },
-                                data: [{
-                                    type: "column",
-                                    yValueFormatString: "#,### Units",
-                                    dataPoints: dataPoints
-                                }]
-                            });
-
-                            $.getJSON("http://localhost:8080/admin/date", function (data) {
+                            $.getJSON("http://localhost:8080/admin/chart/month", function (data) {
                                     for (var i = 0; i < data.length; i++) {
-                                        dataPoints.push({
-                                            x: new Date(data[i].date),
+                                        dps.push({
+                                            label: data[i].name,
+                                            name: data[i].name,
                                             y: data[i].count
                                         });
-
+                                        sum = sum + data[i].count;
                                     }
                                     chart.render();
 
                                 }
                             )
 
+                            var chart = new CanvasJS.Chart("chartContainer", {
+                                theme: "light2", // "light1", "dark1", "dark2"
+                                exportEnabled: true,
+                                animationEnabled: true,
+                                title: {
+                                    text: "Tổng :" + sum
+                                },
+                                data: [{
+                                    type: "pie",
+                                    showInLegend: "true",
+                                    legendText: "{label}",
+                                    indexLabelFontSize: 16,
+                                    indexLabel: "{label} - {y}",
+                                    dataPoints: dps
+                                }]
+                            });
+
+
                         }
 
                     </script>
 
                     <!-- /.table-responsive -->
-                    <div id="chartContainer" style="height: 370px; width: 50%; margin: auto"></div>
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
                     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
                     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 

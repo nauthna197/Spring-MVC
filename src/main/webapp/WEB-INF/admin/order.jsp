@@ -6,9 +6,10 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Chi tiết đơn hàng
-            </h1>
+            <h3 class="page-header">
+                Người gửi : ${info.getUser().getFullname()} <br/>
+                SĐT : ${info.getUser().getNumber()}
+            </h3>
         </div>
         <!-- /.col-lg-12 -->
     </div>
