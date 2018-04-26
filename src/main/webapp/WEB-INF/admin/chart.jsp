@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Thống kê order theo tháng
+                Thống kê order theo 7 ngày gần nhất 
             </h1>
         </div>
         <!-- /.col-lg-12 -->

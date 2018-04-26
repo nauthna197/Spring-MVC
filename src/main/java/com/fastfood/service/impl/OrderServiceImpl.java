@@ -9,6 +9,7 @@ import com.fastfood.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,7 +38,8 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, Integer> impleme
     }
 
     @Override
-    public List<Order> getListOrderByTime() {
-        return orderDao.getListOrderByTime();
+    public Long countByDaily(Date date) {
+        return orderDao.countByDaily(date);
     }
+
 }

@@ -5,6 +5,7 @@ package com.fastfood.service;
 
 import com.fastfood.model.Order;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,5 +16,7 @@ public interface OrderService extends GenericService<Order, Integer> {
 
     Long countOrderByStatus();
 
-    List<Order> getListOrderByTime();
+    Long countByDaily(Date date);
+
+
 }

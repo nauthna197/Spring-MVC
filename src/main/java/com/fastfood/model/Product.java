@@ -24,6 +24,7 @@ public class Product implements Serializable {
 
     private int id;
 
+    @JsonIgnore
     private byte[] image;
 
     @NotBlank(message = "Không được để trốngl !!!")

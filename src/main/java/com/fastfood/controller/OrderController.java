@@ -93,7 +93,7 @@ public class OrderController {
     @PostMapping(value = "admin/getorderbytime")
     @ResponseBody
     public BaseRespone getOrderByTime() throws Exception {
-        List<Order> lst = orderService.getListOrderByTime();
+        List<Order> lst = orderService.findAll();
 
         if(lst==null){
             return new BaseRespone("Fail");

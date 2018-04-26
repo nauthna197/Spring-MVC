@@ -21,7 +21,7 @@
                 animationEnabled: true,
                 theme: "light2",
                 title: {
-                    text: "Daily Sales Data"
+                    text: "Thống kê bán hàng 7 ngày gần nhất"
                 },
                 axisY: {
                     title: "Đơn vị",
@@ -34,11 +34,11 @@
                 }]
             });
 
-            $.getJSON("http://localhost:8080/admin/chart/month", function (data) {
+            $.getJSON("http://localhost:8080/admin/date", function (data) {
                     for (var i = 0; i < data.length; i++) {
                         dataPoints.push({
-                            x: data[i].count,
-                            y: 10
+                            x: new Date(data[i].date),
+                            y: data[i].count
                         });
 
                     }

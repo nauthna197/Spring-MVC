@@ -5,6 +5,7 @@ package com.fastfood.dao;
 
 import com.fastfood.model.Order;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,5 +16,6 @@ public interface OrderDao extends GenericDao<Order, Integer> {
 
     Long countOrderByStatus();
 
-    List<Order> getListOrderByTime();
+    Long countByDaily(Date date);
+
 }

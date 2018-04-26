@@ -2,10 +2,9 @@ package com.fastfood.controller;
 
 
 import ch.qos.logback.core.util.DatePatternToRegexUtil;
-import com.fastfood.model.DataPoint;
-import com.fastfood.model.OrderDetail;
-import com.fastfood.model.Product;
+import com.fastfood.model.*;
 import com.fastfood.service.OrderDetailService;
+import com.fastfood.service.OrderService;
 import com.fastfood.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,6 +28,9 @@ public class ChartController {
     @Autowired
     OrderDetailService orderDetailService;
 
+    @Autowired
+    OrderService orderService;
+
     @RequestMapping("chart")
     public String showChart(){
         return "admin/chart";
@@ -50,22 +52,25 @@ public class ChartController {
 
     @RequestMapping("date")
     @ResponseBody
-    public List<DataPoint> getListChart15(){
+    public List<DataPointDaily> getListChart15() throws Exception {
         Calendar cal = Calendar.getInstance();
         Date date = new Date();
         List<Date> listDate = new ArrayList<Date>();
-        List<DataPoint> listDataPoint = new ArrayList<DataPoint>();
+        List<DataPointDaily> dataPointDailies = new ArrayList<DataPointDaily>();
+
         for (int i =0;i<7;i++){
-            cal.add(Calendar.DATE,-i);
+            cal.add(Calendar.DATE,-1);
             Date dateAgo = cal.getTime();
             listDate.add(dateAgo);
         }
 
+        for(Date date2: listDate){
+            Long count2 = orderService.countByDaily(date2);
+            DataPointDaily dataPointDaily = new DataPointDaily(date2,count2);
+            dataPointDailies.add(dataPointDaily);
+        }
 
-
-
-
-
+        return dataPointDailies;
     }
 
 

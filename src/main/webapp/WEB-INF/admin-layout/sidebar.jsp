@@ -19,8 +19,8 @@
             <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
                 Biểu đồ<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="/admin/chart">Theo tháng</a></li>
-                    <li><a href="morris.html">Morris.js Charts</a></li>
+                    <li><a href="/admin/chart">Biểu đồ bán thàng theo 7 ngày gần nhất</a></li>
+                    <li><a href="morris.html">Biểu đồ món ăn theo 7 ngày gần nhất</a></li>
                 </ul> <!-- /.nav-second-level --></li>
             <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Quản lý cửa hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
