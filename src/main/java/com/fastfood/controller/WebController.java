@@ -107,6 +107,7 @@ public class WebController {
     @RequestMapping("/logout")
     public String logout(HttpSession session){
         session.removeAttribute("USER");
+        session.removeAttribute("discount");
         return "redirect:/index";
     }
 

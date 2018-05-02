@@ -183,7 +183,7 @@
                                             </td>
                                             <td ng-if="order.status==2"><label class="label label-primary">Đơn hàng đã ship</label>
                                             </td>
-                                            <td ng-if="order.status==4"><label class="label label-warning">Đơn hàng đã hủy</label>
+                                            <td ng-if="order.status==4"><label class="label label-danger">Đơn hàng đã hủy</label>
                                             </td>
                                             <td ng-if="order.status==3"><label class="label label-success"> Đơn hàng hoàn tất</label>
                                             </td>

@@ -1,7 +1,9 @@
 package com.fastfood.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
@@ -12,11 +14,14 @@ import java.io.Serializable;
 public class ProductInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
     private MultipartFile fileData;
+    @NotBlank(message = "Bạn phải nhập tên ")
     private String name;
+
+    @NotNull(message = "Trường bắt buộc")
     private double price;
     private int id;
+
     private Category categoryBean;
 
     public ProductInfo() {

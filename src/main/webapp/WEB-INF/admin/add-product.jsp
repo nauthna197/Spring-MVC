@@ -39,7 +39,7 @@
                                         <form:errors path="price" cssClass="text-danger"/>
                                     </p>
                                     <label>Chọn danh mục</label>
-                                    <form:select path="typeCustomerBean.categoryId"
+                                    <form:select path="categoryBean.categoryId"
                                                  class="form-control">
                                         <form:options items="${lstCategory}" itemValue="categoryId"
                                                       itemLabel="name"></form:options>

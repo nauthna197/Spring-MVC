@@ -60,7 +60,7 @@
                                         </td>
                                     </c:if>
                                     <c:if test="${item.status==4}">
-                                        <td ng-if="order.status==4"><label class="label label-warning">Đơn hàng đã
+                                        <td><label class="label label-danger">Đơn hàng đã
                                             hủy</label>
                                         </td>
                                     </c:if>

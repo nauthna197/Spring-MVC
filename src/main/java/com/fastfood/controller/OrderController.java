@@ -48,7 +48,11 @@ public class OrderController {
     public BaseRespone checkOut(HttpSession session){
         Cart cart = (Cart) session.getAttribute("cart");
         User user = (User) session.getAttribute("USER");
-        int discount = (int) session.getAttribute("discount");
+        int discount = 0;
+        if(session.getAttribute("discount")!=null){
+            discount = (int) session.getAttribute("discount");
+        }
+
 
         if(cart == null || cart.getCount()==0){
             return new BaseRespone("Giỏ hàng của bạn chưa có sản phẩm nào");
@@ -86,6 +90,7 @@ public class OrderController {
                     customer.setEmail(user.getEmail());
                     customer.setNumber(user.getNumber());
                     customer.setFullname(user.getFullname());
+                    customerService.saveOrUpdate(customer);
                 }
 
 

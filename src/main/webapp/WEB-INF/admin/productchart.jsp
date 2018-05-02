@@ -52,7 +52,7 @@
                                 exportEnabled: true,
                                 animationEnabled: true,
                                 title: {
-                                    text: "Tổng :" + sum
+                                    text: "Thống kê món ăn trong tháng"
                                 },
                                 data: [{
                                     type: "pie",

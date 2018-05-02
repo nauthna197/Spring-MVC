@@ -1,5 +1,7 @@
 package com.fastfood.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -20,12 +22,16 @@ public class Customer implements Serializable {
 
 	private String code;
 
+	@NotBlank(message = "Trường này là bắt buộc !")
 	private String country;
 
+	@NotBlank(message = "Trường này là bắt buộc !")
 	private String email;
 
+	@NotBlank(message = "Trường này là bắt buộc !")
 	private String fullname;
 
+	@NotBlank(message = "Trường này là bắt buộc !")
 	private String number;
 
 	//bi-directional many-to-one association to TypeCustomer

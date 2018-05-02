@@ -219,8 +219,7 @@
                 $http.post(url,data, "").then(function (response) {
                         if (response.data.message == "Success") {
                             alert("Đăng ký thành công");
-                            $scope.userForm.setUntouched();
-                            $scope.userForm.$setPristine();
+                            $window.location.reload();
                         } else {
                             alert("Đăng ký thất bại")
                         }

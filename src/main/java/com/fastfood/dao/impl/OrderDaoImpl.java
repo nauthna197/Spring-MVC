@@ -82,7 +82,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order, Integer> implements Orde
 
     @Override
     public Double sumDaily(Date date) {
-        String hql = "select sum(amount)as amount from Order where day(orderDate) = :day and month(orderDate) = :month";
+        String hql = "select sum(amount)as amount from Order where day(orderDate) = :day and month(orderDate) = :month and status = 3";
         Query query = getSession().createQuery(hql);
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

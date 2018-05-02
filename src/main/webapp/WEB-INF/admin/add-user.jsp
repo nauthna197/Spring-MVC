@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label>Họ và tên</label>
                                     <form:input path="fullname" class="form-control"
-                                                placeholder="Họ và tên"/>
+                                                placeholder="Họ và tên" />
                                     <p class="help-block">
                                         <form:errors path="fullname" cssClass="text-danger"/>
                                     </p>
