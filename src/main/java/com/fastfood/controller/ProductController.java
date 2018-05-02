@@ -49,7 +49,6 @@ public class ProductController {
                              @RequestParam("id") int id) throws Exception {
         Product product = null;
         if (id > 0) {
-//	           product = this.productDAO.findProduct(code);
             product = productService.findById(id);
         }
         if (product != null && product.getImage() != null) {
@@ -88,14 +87,20 @@ public class ProductController {
 
     @RequestMapping("/edit/{id}")
     public String formEdit(ModelMap model, @PathVariable int id) throws Exception {
-        model.addAttribute("product", productService.findById(id));
+        Product product = productService.findById(id);
+        ProductInfo info = new ProductInfo();
+        info.setName(product.getName());
+        info.setPrice(product.getPrice());
+        info.setCategoryBean(product.getCategoryBean());
+        info.setId(id);
+        model.addAttribute("productInfo",info);
         return "admin/edit-product";
     }
 
     @PostMapping("/edit/{id}")
-    public String editProduct(@Validated @ModelAttribute Product product, BindingResult result, RedirectAttributes redirectAttributes) throws Exception {
+    public String editProduct(@Validated @ModelAttribute ProductInfo product, BindingResult result, RedirectAttributes redirectAttributes) throws Exception {
         if (!result.hasErrors()) {
-            productService.saveOrUpdate(product);
+            productService.saveProduct(product);
             redirectAttributes.addFlashAttribute("message", "Sửa sản phẩm thành công");
             return "redirect:/admin/product/edit/{id}";
         }

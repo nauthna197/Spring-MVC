@@ -20,7 +20,6 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 
     @Override
     public User checkLogin(String username, String password) {
-        logger.info("username :" + username + "password :" + password);
         Criteria criteria = getSession().createCriteria(User.class);
         try {
             criteria.add(Restrictions.eq("username", username).ignoreCase());

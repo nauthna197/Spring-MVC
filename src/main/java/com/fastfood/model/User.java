@@ -26,34 +26,27 @@ public class User implements Serializable {
     private int id;
 
 
-    @Size(min = 6, max = 50, message = "Trên 6 ký tự và dưới 50 ký tự")
-    @NotBlank(message = "Không được để trống !!!")
+
     private String address;
 
 
-    @NotBlank(message = "Không được để trống !!!")
-    @Email(message = "Không đúng định dạng email")
+
     private String email;
 
-    @Size(min = 6, max = 50, message = "Trên 6 ký tự và dưới 50 ký tự")
-    @NotBlank(message = "Không được để trống !!!")
+
     private String fullname;
 
     private String gender;
 
-    @Size(min = 10, max = 12, message = "Số diện thoại chỉ có thể nhập được 10 số đến 12 số")
-    @NotBlank(message = "Không được để trống !!!")
+
     private String number;
 
-    @Size(min = 6, max = 50, message = "Trên 6 ký tự và dưới 50 ký tự")
-    @NotBlank(message = "Không được để trống !!!")
+
     private String password;
 
-    @NotNull(message = "Không được để trống !!!")
     private int role;
 
-    @Size(min = 6, max = 50, message = "Trên 6 ký tự và dưới 50 ký tự")
-    @NotBlank(message = "Không được để trống !!!")
+
     private String username;
 
     //bi-directional many-to-one association to Order

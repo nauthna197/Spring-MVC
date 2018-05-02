@@ -15,6 +15,11 @@ import java.util.List;
 public interface ProductService extends GenericService<Product, Integer> {
     public List<Product> findAll(Integer offset, Integer maxResult);
     public Long count();
+    public List<Product> getComboProduct();
+
+    public List<Product> getProductWithoutCombo();
+
+
 
     boolean saveProduct(ProductInfo productInfo) throws IOException;
 }

@@ -16,5 +16,9 @@ public interface ProductDao extends GenericDao<Product, Integer> {
     public List<Product> findAll(Integer offset, Integer maxResult);
     public Long count();
 
+    public List<Product> getComboProduct();
+
+    public List<Product> getProductWithoutCombo();
+
     boolean saveProduct(ProductInfo productInfo) throws IOException;
 }

@@ -2,6 +2,7 @@ package com.fastfood.controller;
 
 import com.fastfood.message.BaseRespone;
 import com.fastfood.model.*;
+import com.fastfood.service.CustomerService;
 import com.fastfood.service.OrderService;
 import com.fastfood.service.ProductService;
 import com.fastfood.service.UserService;
@@ -38,6 +39,9 @@ public class WebController {
     @Autowired
     OrderService orderService;
 
+    @Autowired
+    CustomerService customerService;
+
 
     @RequestMapping(value = {"productImage"}, method = RequestMethod.GET)
     public void productImage(HttpServletRequest request, HttpServletResponse response, Model model,
@@ -56,7 +60,8 @@ public class WebController {
 
     @RequestMapping("index")
     ModelAndView home(ModelAndView modelAndView, ModelMap modelMap) throws Exception {
-        modelMap.addAttribute("listProduct", productService.findAll());
+        modelMap.addAttribute("listCombo",productService.getProductWithoutCombo());
+        modelMap.addAttribute("listProduct", productService.getComboProduct());
         modelAndView.setViewName("user/index");
         return modelAndView;
     }
@@ -82,6 +87,13 @@ public class WebController {
         User user1 = userService.checkLogin(user.getUsername(), user.getPassword());
         if (user1!=null && user1.getRole()==ROLE_USER) {
             session.setAttribute("USER",user1);
+
+            Customer customer = customerService.getCustomerbyNumber(user1.getNumber());
+            if(customer!=null){
+                session.setAttribute("discount",customer.getTypeCustomerBean().getDiscount());
+            }
+
+
             return "redirect:/index";
         }
         else {
@@ -90,6 +102,19 @@ public class WebController {
         }
     }
 
+
+    //logout
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("USER");
+        return "redirect:/index";
+    }
+
+
+
+
+
+    //Cart Action
     @RequestMapping("cart")
     public String showCart() {
         return "user/cart";
@@ -178,9 +203,9 @@ public class WebController {
     }
 
 
-    @RequestMapping("deleteorder/{id:[\\d+]}")
+    @RequestMapping("deleteorder/{id}")
     @ResponseBody
-    public BaseRespone deleteOrder(@PathVariable(value = "id") Integer id, HttpSession httpSession, ModelMap modelMap) throws Exception {
+    public BaseRespone deleteOrder(@PathVariable(value = "id") Integer id, HttpSession httpSession ) throws Exception {
         Cart cart = (Cart) httpSession.getAttribute("cart");
         Product product = productService.findById(id);
 
@@ -200,7 +225,6 @@ public class WebController {
     @PostMapping("register")
     @ResponseBody
     public BaseRespone addUser(@RequestBody User user) {
-
         if(user!=null){
             try {
                 userService.persist(user);

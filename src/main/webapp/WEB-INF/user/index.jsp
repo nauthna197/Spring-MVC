@@ -24,120 +24,28 @@
              data-cycle-prev="div.pagers a.featuredPrev"
              data-cycle-next="div.pagers a.featuredNxt"
         >
-            <ul class="product_show">
-                <li class="column">
-                    <div class="img">
-                        <div class="offer_icon"></div>
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/TEEN.jpg" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Combo 3 Người</a></h6>
-                    <h5>199.000 VNĐ</h5>
-                </li>
-                <li class="column">
-                    <div class="img">
-                        <div class="offer_icon"></div>
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/cb2.png" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Combo 3 Người</a></h6>
-                    <h5>199.000 VNĐ</h5>
-                </li>
-                <li class="column">
-                    <div class="img">
-                        <div class="offer_icon"></div>
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/cb1.png" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Combo KIDDIE </a></h6>
-                    <h5>199.000 VNĐ</h5>
-                </li>
+            <c:forEach items="${listCombo}" var="product" varStatus="itr">
+                <c:if test="${(itr.count==1)||(itr.count%5==0)}">
+                    <ul class="product_show">
+                </c:if>
                 <li class="column">
                     <div class="img">
                         <div class="hover_over">
                             <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
+                            <a class="cart" href="/ordernow/${product.id}" >cart</a>
                         </div>
                         <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/tt.jpg" alt="product">
+                            <img src="${pageContext.request.contextPath}/productImage?id=${product.id}"  alt="product">
                         </a>
+
                     </div>
-                    <h6><a href="#">Combo Gà Rán B</a></h6>
-                    <h5>81.000 VNĐ</h5>
+                    <h6><a href="#">${product.name}</a></h6>
+                    <h5><fmt:formatNumber type="currency" pattern="###,###">${product.price}</fmt:formatNumber> VND</h5>
                 </li>
-            </ul>
-            <ul class="product_show">
-                <li class="column">
-                    <div class="img">
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/BF1.png" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Phần Ăn XL</a></h6>
-                    <h5>99.000 VNĐ</h5>
-                </li>
-                <li class="column">
-                    <div class="img">
-                        <div class="offer_icon"></div>
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/2.jpg" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Combo Gà Rán A</a></h6>
-                    <h5>81.000 VNĐ</h5>
-                </li>
-                <li class="column">
-                    <div class="img">
-                        <div class="offer_icon"></div>
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/tt.jpg" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">Combo Gà Rán B</a></h6>
-                    <h5>81.000 VNĐ</h5>
-                </li>
-                <li class="column">
-                    <div class="img">
-                        <div class="hover_over">
-                            <a class="link" href="#">link</a>
-                            <a class="cart" href="#">cart</a>
-                        </div>
-                        <a href="#">
-                            <img src="<%=request.getContextPath()%>/resources/images/icons/cb5.jpg" alt="product">
-                        </a>
-                    </div>
-                    <h6><a href="#">COMBO FAMILY MEAL 3</a></h6>
-                    <h5>+−
-                        250.000 VNĐ</h5>
-                </li>
-            </ul>
+                <c:if test="${itr.count%4==0}">
+                    </ul>
+                </c:if>
+            </c:forEach>
         </div>
     </div><!--end featured-->
 

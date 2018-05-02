@@ -57,17 +57,16 @@ public class UserController {
         return "admin/edit-user";
     }
 
-    @PostMapping("edit/{id:[\\d]+}")
+    @PostMapping("/edit/{id}")
     public String editUser(@Validated @ModelAttribute User user, BindingResult bindingResult, @PathVariable int id, RedirectAttributes redirectAttributes) {
         if (!bindingResult.hasErrors()) {
             try {
                 userService.saveOrUpdate(user);
                 redirectAttributes.addFlashAttribute("message", "Sửa tài khoản thành công !!");
-                return "redirect:admin/edit{id}";
+                return "redirect:/admin/user/edit/{id}";
             } catch (Exception e) {
-                logger.info(e);
                 redirectAttributes.addFlashAttribute("message", "Sửa tài khoản thất bại !!");
-                return "redirect:admin/edit{id}";
+                return "redirect:/admin/user/edit/{id}";
             }
         }
         return "admin/edit-user";

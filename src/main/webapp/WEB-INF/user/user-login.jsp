@@ -19,7 +19,6 @@
 </div>
 <!-- container -->
 
-
 <!-- strat the main content area -->
 
 <div class="container" ng-app="app">
@@ -74,12 +73,13 @@
                         </li>
 
                         <li class="row clearfix">
-                            <label class="input_tag" for="region">Giới tính <em>*</em></label>
+                            <label class="input_tag" for="newsletter">Giới tính <em>*</em></label>
                             <div class="inputOuter">
-                                <select  ng-model="gender" id="region" name="state" class="default" ng-change="changedValue(blisterPackTemplateSelected)"
-                                         data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates"
-                                         tabindex="1"  required>
-                                    <option value="">Chọn giới tính</option>
+                                    <input id="radio1" type="radio" name="newsletter" ng-model="gender" value="1">
+                                    <label for="radio1">Nam</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input id="radio2" type="radio" name="newsletter" ng-model="gender" value="2">
+                                    <label for="radio2">Nữ</label>
                                 </select>
                             </div>
                         </li>
@@ -98,7 +98,7 @@
                             <label class="input_tag" for="chPass">Mật khẩu <em>*</em></label>
                             <div class="inputOuter">
                                 <input ng-model="password" id="chPass" type="password" name="validate" value=""
-                                       placeholder="********************" required/>
+                                       placeholder="**************" required/>
                             </div>
                         </li>
                         <p class="help-block">
@@ -194,14 +194,9 @@
     var app = angular.module('app', []);
 
     app.controller("dangky", function ($scope, $http, $location) {
-
-        $scope.blisterPackTemplates = [{id:1,name:"Nam"},{id:2,name:"Nữ"}];
         $scope.model = "";
 
 
-        $scope.changedValue = function(item) {
-            $scope.gender = (item.id);
-        }
 
         $scope.insert = function (items) {
 
@@ -224,7 +219,8 @@
                 $http.post(url,data, "").then(function (response) {
                         if (response.data.message == "Success") {
                             alert("Đăng ký thành công");
-                            $scope.data={};
+                            $scope.userForm.setUntouched();
+                            $scope.userForm.$setPristine();
                         } else {
                             alert("Đăng ký thất bại")
                         }

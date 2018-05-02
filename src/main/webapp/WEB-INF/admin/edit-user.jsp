@@ -21,7 +21,7 @@
                                     </button>
                                         ${message}</div>
                             </c:if>
-                            <form:form method="post" commandName="user">
+                            <form:form method="post" commandName="user" >
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>Họ và tên</label>

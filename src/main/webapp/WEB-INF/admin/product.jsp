@@ -34,7 +34,6 @@
                             <th>Giá</th>
                             <th>Danh mục</th>
                             <th>Ảnh</th>
-                            <th></th>
                         </tr>
                         </thead>
                         <tbody>

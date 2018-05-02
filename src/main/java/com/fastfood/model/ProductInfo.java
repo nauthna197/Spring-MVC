@@ -14,27 +14,34 @@ public class ProductInfo implements Serializable {
 
 
     private MultipartFile fileData;
+    private String name;
+    private double price;
+    private int id;
+    private Category categoryBean;
+
+    public ProductInfo() {
+    }
+
+    public static long getSerialVersionUID() {
+
+        return serialVersionUID;
+    }
 
     public MultipartFile getFileData() {
         return fileData;
     }
 
-
     public void setFileData(MultipartFile fileData) {
         this.fileData = fileData;
     }
 
-    private String name;
-
-    private double price;
-
-
-    private Category categoryBean;
-
-
-    public ProductInfo() {
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return this.name;

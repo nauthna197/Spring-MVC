@@ -39,6 +39,16 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Integer> imp
     }
 
     @Override
+    public List<Product> getComboProduct() {
+        return productDao.getComboProduct();
+    }
+
+    @Override
+    public List<Product> getProductWithoutCombo() {
+        return  productDao.getProductWithoutCombo();
+    }
+
+    @Override
     public boolean saveProduct(ProductInfo productInfo) throws IOException {
         return productDao.saveProduct(productInfo);
     }

@@ -27,7 +27,7 @@
         </ul>
         </li>
         <li><a class="labtops" href="#">NHÀ HÀNG</a></li>
-        <li><a class="tablets" href="#">KHUYẾN MẠI</a></li>
+        <li><a class="tablets" href="/history">LỊCH SỬ ĐẶT HÀNG</a></li>
         <li><a class="software" href="#">THƯ VIỆN ẢNH</a></li>
         <li>
         <a class="watches hasdropdown" href="#">THÀNH VIÊN</a>

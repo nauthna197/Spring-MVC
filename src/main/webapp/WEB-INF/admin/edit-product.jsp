@@ -20,7 +20,7 @@
                                     </button>
                                         ${message}</div>
                             </c:if>
-                            <form:form method="post" commandName="product">
+                            <form:form method="post" commandName="productInfo" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Tên</label>
                                     <form:input path="name" class="form-control"
@@ -40,12 +40,7 @@
                                         <form:options items="${lstCategory}" itemValue="categoryId"
                                                       itemLabel="name"></form:options>
                                     </form:select>
-                                    <label>Ảnh</label>
-                                    <form:input path="image" class="form-control"
-                                                placeholder="Chọn ảnh"/>
-                                    <p class="help-block">
-                                        <form:errors path="image" cssClass="text-danger"/>
-                                    </p>
+
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                                 <button type="reset" class="btn btn-default">Reset</button>

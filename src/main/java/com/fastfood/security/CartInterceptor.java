@@ -24,11 +24,6 @@ public class CartInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-            Cart cart  = (Cart) request.getSession().getAttribute("cart");
-            if(cart!=null){
-                request.getSession().setAttribute("cart",cart);
-            }
-
 
             request.setAttribute("category",categoryService.findAll());;
 

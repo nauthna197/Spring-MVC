@@ -38,6 +38,10 @@ public abstract class GenericServiceImpl<T, PK> implements GenericService<T, PK>
         genericDao.deleteBatch(paramT);
     }
 
+    public void merge(T transientObject)throws Exception{
+        genericDao.merge(transientObject);
+    }
+
     public List<T> findAll() throws Exception {
         return genericDao.findAll();
     }

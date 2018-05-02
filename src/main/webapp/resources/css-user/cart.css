@@ -5,6 +5,8 @@ table.cart_table {
 	padding:0;
 	border-collapse: collapse;
 }
+.table-responsive{margin-top:25px;}
+
 table.cart_table thead tr th,
 table.cart_table tbody tr td {
 	padding:12px;

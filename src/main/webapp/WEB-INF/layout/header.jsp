@@ -20,7 +20,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- CSS
+
         ================================================== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css-user/main.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css-user/home2.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css-user/responsive.css">
@@ -64,9 +69,9 @@
 
         <ul id="topNav">
         <c:if test="${sessionScope.USER!=null}"><li><a>Xin chào ${sessionScope.USER.fullname}</a></li></c:if>
-        <c:if test="${sessionScope.USER==null}"><li><a href="/login">Đăng Kí Ngay</a></li></c:if>
+        <c:if test="${sessionScope.USER==null}"><li><a href="/login">Đăng kí và đăn nhập</a></li></c:if>
         <li><a href="/cart">Danh sách giỏ hàng</a></li>
-        <li><a href="cart.html">Giỏ hàng</a></li>
+        <c:if test="${sessionScope.USER!=null}"><li><a href="/logout">Đăng xuất</a></li></c:if>
         </ul>
         </div><!--end sixteen-->
         </div><!--end container-->

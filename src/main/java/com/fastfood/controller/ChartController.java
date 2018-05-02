@@ -41,6 +41,9 @@ public class ChartController {
         return "admin/productchart";
     }
 
+    @RequestMapping("money")
+    public String showMoneyChart(){return "admin/moneychart";}
+
 
     @RequestMapping(value = "chart/month",produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
@@ -50,7 +53,9 @@ public class ChartController {
         for(Product product: lstProduct){
             Long x = orderDetailService.getDataPointAllMonth(product);
             DataPoint dataPoint = new DataPoint(x,product.getName());
-            listDataPoint.add(dataPoint);
+            if(x!=0){
+                listDataPoint.add(dataPoint);
+            }
         }
         return listDataPoint;
     }
@@ -63,7 +68,8 @@ public class ChartController {
         List<Date> listDate = new ArrayList<Date>();
         List<DataPointDaily> dataPointDailies = new ArrayList<DataPointDaily>();
 
-        for (int i =0;i<7;i++){
+        listDate.add(date);
+        for (int i =0;i<6;i++){
             cal.add(Calendar.DATE,-1);
             Date dateAgo = cal.getTime();
             listDate.add(dateAgo);
@@ -74,7 +80,29 @@ public class ChartController {
             DataPointDaily dataPointDaily = new DataPointDaily(date2,count2);
             dataPointDailies.add(dataPointDaily);
         }
+        return dataPointDailies;
+    }
 
+    @RequestMapping("moneychart")
+    @ResponseBody
+    public List<DataPointDaily> getListMoneyChart() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        Date date = new Date();
+        List<Date> listDate = new ArrayList<Date>();
+        List<DataPointDaily> dataPointDailies = new ArrayList<DataPointDaily>();
+
+        listDate.add(date);
+        for (int i =0;i<6;i++){
+            cal.add(Calendar.DATE,-1);
+            Date dateAgo = cal.getTime();
+            listDate.add(dateAgo);
+        }
+
+        for(Date date2: listDate){
+            Double count2 = orderService.sumDaily(date2);
+            DataPointDaily dataPointDaily = new DataPointDaily(date2,count2);
+            dataPointDailies.add(dataPointDaily);
+        }
         return dataPointDailies;
     }
 

@@ -6,7 +6,9 @@ package com.fastfood.dao.impl;
 import com.fastfood.dao.ProductDao;
 import com.fastfood.model.Product;
 import com.fastfood.model.ProductInfo;
+import org.hibernate.Query;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -35,6 +37,22 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Integer> implements 
     }
 
     @Override
+    public List<Product> getComboProduct() {
+        String hql = "From Product where category not like 1";
+        Query query = getSession().createQuery(hql);
+
+        return query.list();
+    }
+
+    @Override
+    public List<Product> getProductWithoutCombo() {
+        String hql = "From Product where category like 1";
+        Query query = getSession().createQuery(hql);
+
+        return query.list();
+    }
+
+    @Override
     public boolean saveProduct(ProductInfo productInfo) throws IOException {
         Product product = new Product();
         if (productInfo.getFileData() != null) {
@@ -43,11 +61,14 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Integer> implements 
                 product.setImage(image);
             }
         }
+        if(productInfo.getId()!=0){
+            product.setId(productInfo.getId());
+        }
         product.setName(productInfo.getName());
         product.setPrice(productInfo.getPrice());
         product.setCategoryBean(productInfo.getCategoryBean());
         try {
-            getSession().persist(product);
+            getSession().saveOrUpdate(product);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

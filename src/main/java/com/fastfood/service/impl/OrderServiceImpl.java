@@ -5,6 +5,7 @@ package com.fastfood.service.impl;
 
 import com.fastfood.dao.OrderDao;
 import com.fastfood.model.Order;
+import com.fastfood.model.User;
 import com.fastfood.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, Integer> impleme
     }
 
     @Override
+    public List<Order> getOrderByUser(User user) {
+        return  orderDao.getOrderByUser(user);
+    }
+
+    @Override
     public Long countOrderByStatus() {
         return orderDao.countOrderByStatus();
     }
@@ -40,6 +46,16 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, Integer> impleme
     @Override
     public Long countByDaily(Date date) {
         return orderDao.countByDaily(date);
+    }
+
+    @Override
+    public List<Order> getOrderFilterd() {
+        return  orderDao.getOrderFilterd();
+    }
+
+    @Override
+    public Double sumDaily(Date date) {
+        return orderDao.sumDaily(date);
     }
 
 }

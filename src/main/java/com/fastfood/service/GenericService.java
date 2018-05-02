@@ -13,6 +13,8 @@ public interface GenericService<T, PK> {
 
     public void persistBatch(List<T> paramT) throws Exception;
 
+    public void merge(T paramT) throws Exception;
+
     public void update(T paramT) throws Exception;
 
     public void delete(T paramT, PK param) throws Exception;
@@ -46,5 +48,7 @@ public interface GenericService<T, PK> {
     public PK countAll(List<KeyValue> lstKeyValue, boolean blnExactMatch) throws Exception;
 
     void saveOrUpdate(T transientObject) throws Exception;
+
+
 
 }

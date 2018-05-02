@@ -13,6 +13,8 @@ public interface GenericDao<T, PK> {
 
     public void update(T paramT) throws Exception;
 
+    public void merge(T paramT) throws Exception;
+
     public void saveOrUpdate(T paramT);
 
     public void delete(T paramT, PK paramPK) throws Exception;
@@ -48,6 +50,8 @@ public interface GenericDao<T, PK> {
                            int intFirstItemIndex, int intMaxItems, boolean blnExactMatch) throws Exception;
 
     public PK countAll(List<KeyValue> lstKeyValue, boolean blnExactMatch) throws Exception;
+
+
 
 
 }

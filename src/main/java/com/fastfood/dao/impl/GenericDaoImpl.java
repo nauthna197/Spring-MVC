@@ -285,8 +285,8 @@ public abstract class GenericDaoImpl<T, PK extends Serializable> implements Gene
     }
 
     // ThanhNT
-    public T merge(T object) {
-        return (T) getSession().merge(object);
+    public void merge(T object) {
+         getSession().merge(object);
     }
 
     //vuongh
@@ -298,123 +298,4 @@ public abstract class GenericDaoImpl<T, PK extends Serializable> implements Gene
         }
     }
 
-//    /**
-//     * Get Object by Oracle ROWID
-//     * @author  ThanhNT
-//     * @since   2017-01-10
-//     * @version 1.0
-//     * */
-//	@Override
-//	public List<T> getByRowIds(String[] rowIds) {
-//        Session session = getSession();
-//        Criteria cr = session.createCriteria(getPersistenceType());
-//        cr.add(Restrictions.in("rowId", rowIds));
-//		return cr.list();
-//	}
-//	
-//	/**
-//	 * @author TienDM
-//	 * @param strSql
-//	 * @param clazz
-//	 * @return
-//	 */
-//	public <E> E queryObjAndBindData(String strSql, Class<E> clazz){
-//		if(strSql == null || strSql.trim().equals("")) return null;
-//		try{
-//			List<E> lsReturn = queryListAndBindData(strSql, clazz);
-//			if(lsReturn!=null && !lsReturn.isEmpty()){
-//				return lsReturn.get(0);
-//			}
-//		    return null;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		} 
-//	}
-//	
-//	/**
-//	 * @author TienDM
-//	 * @param strSql
-//	 * @param mapParams
-//	 * @param clazz
-//	 * @return Object
-//	 */
-//	public <E> E queryObjAndBindData(String strSql,Map<String, Object> mapParams, Class<E> clazz){
-//		if(strSql == null || strSql.trim().equals("")) return null;
-//		try{
-//			List<E> lsReturn = queryListAndBindData(strSql,mapParams, clazz);
-//			if(lsReturn!=null && !lsReturn.isEmpty()){
-//				return lsReturn.get(0);
-//			}
-//		    return null;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		} 
-//	}
-//	
-//	/**
-//	 * @author TienDM
-//	 * @param strSql
-//	 * @param clazz
-//	 * @return List
-//	 */
-//	public <E> List<E> queryListAndBindData(String strSql, Class<E> clazz){
-//		if(strSql == null || strSql.trim().equals("")) return null;
-//		try{
-//			Session session = getSession();
-//			SQLQuery query =  session.createSQLQuery(strSql).addEntity(clazz);
-//			List<E> lsReturn = new ArrayList<E>();
-//			if(ClassUtils.isPrimitiveOrWrapper(clazz) || clazz.equals(String.class)){
-//				List<Object> lsResultSQL =query.list();
-//				for(Object item : lsResultSQL){
-//					lsReturn.add((E) item);
-//				}
-//			}else{
-//				lsReturn = query.list();
-//			}
-//		    return lsReturn;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		} 
-//	}
-//	
-//	/**
-//	 * @author TienDM
-//	 * @param strSql
-//	 * @param mapParams
-//	 * @param clazz
-//	 * @return List
-//	 */
-//	public <E> List<E> queryListAndBindData(String strSql,Map<String, Object> mapParams, Class<E> clazz){
-//		if(strSql == null || strSql.trim().equals("")) return null;
-//		try{
-//			Session session = getSession();
-//			SQLQuery query =  session.createSQLQuery(strSql).addEntity(clazz);
-//			for (String param : mapParams.keySet()) {
-//				query.setParameter(param, mapParams.get(param));
-//			}
-//			List<E> lsReturn = new ArrayList<E>();
-//			if(ClassUtils.isPrimitiveOrWrapper(clazz) || clazz.equals(String.class)){
-//				List<Object> lsResultSQL =query.list();
-//				for(Object item : lsResultSQL){
-//					lsReturn.add((E) item);
-//				}
-//			}else{
-//				lsReturn = query.list();
-//			}
-//		    return lsReturn;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		} 
-//	}
-//	
-//	public <E> Criteria createCriteriaPaging(Class<E> clazz, int page, int size){
-//		Criteria criteria = getSession().createCriteria(clazz);
-//		criteria.setFirstResult((page-1) * size);
-//		criteria.setMaxResults(size);
-//		return criteria;
-//	}
 }

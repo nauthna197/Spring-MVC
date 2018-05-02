@@ -22,15 +22,19 @@
                 <ul class="nav nav-second-level">
                     <li><a href="/admin/chart">Biểu đồ bán hàng theo 7 ngày gần nhất</a></li>
                     <li><a href="/admin/productchart">Biểu đồ theo món ăn</a></li>
+                    <li><a href="/admin/money">Biểu đồ doanh thu theo 7 ngày gần nhất</a></li>
                 </ul> <!-- /.nav-second-level --></li>
             <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Quản lý cửa hàng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="admin/product/">Quản lý sản phẩm</a></li>
                     <li><a href="admin/category/">Quản lý danh mục</a></li>
                     <li><a href="admin/emp/">Quản lý nhân viên</a></li>
+                    <li><a href="admin/customer">Quản lý khách hàng </a></li>
+                    <li><a href="admin/typecustomer/">Quản lý nhóm khách hàng</a></li>
                 </ul>
             <c:if test="${sessionScope.UserInfo.role==1}">
             <li><a href="/admin/user/"><i class="fa fa-wrench fa-fw"></i> Quản lý tài khoản</a></c:if>
+            <li><a href="/admin/getallorder"><i class="glyphicon glyphicon-list"></i> Lịch sử đơn hàng</a></li>
     </div>
     <!-- /.sidebar-collapse -->
 </div>
